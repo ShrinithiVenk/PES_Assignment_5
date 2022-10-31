@@ -10,7 +10,7 @@
 
 #### Code Optimization - Following Techniques were used:
 
-##Loop Unrolling:
+## Loop Unrolling:
 
 1. In IshaResult function, loop unrolling was done to replace the for statement.<br /> 
 Initial:<br /> 
@@ -111,7 +111,7 @@ Post Optimization:
 		result[19] ^= temp[19];
              }
 	     
-##Loop Jamming:
+## Loop Jamming:
 3. In IshaProcessMessageBlock function, two for loops with same conditions were jammed togther to make as a one loop and was then chnaged to while loop for optimization.
 Initial:
 
@@ -171,7 +171,7 @@ Post Optimization:
 			opad[i] = keypad[i] ^ 0x5c;
 		}
 
-###Loop Inversion:
+## Loop Inversion:
 1. The two changes from Loop jamming above also shows the loop inversions. Apart, in function pbkf2_hmac_isha, the for loops were inverted to while loops.
 Initial:
             
@@ -196,13 +196,13 @@ Post Optimization:
 		DK[i] = accumulator[i];
 	}
 	
-###Defining Macros
+## Defining Macros
 1. The values  0xFFFFFFFF and 0xFF were defined as macros for effcient reusability:
 
           #define A1 0xFFFFFFFF
           #define A2 0xFF
 	  
-###Using register variables
+## Using register variables
 1. In isha.c file, the variable B and t were declared as register variables directly to access the direct memory location and hence optimize the code.
 2. In pbkf2.c file, the variables i and j were declared as register variables directly to access the direct memory location and hence optimize the code.
 
@@ -211,7 +211,7 @@ Post Optimization:
 	     register size_t i;
 	     register int j=iter;
 	     
-###Using string library functions
+## Using string library functions
 1. memcpy and memset string functions were used to improve the code reusability and lessen the space and hence time:
 Initial:
 
@@ -256,7 +256,7 @@ Post Optimization:
 	}
 	
 	
-##Little endianess
+## Little endianess
 1. Big endianess was converted to small endianess and pointers were used to access the variables. Changes were made in ishaResult and F functions respectively.
 Initial:
 
@@ -291,7 +291,7 @@ Post Optimization:
 	
 	
 	
-###Code shrinking:
+## Code shrinking:
 1. Initially, in ishaInput, there were some redundant statements that were removed and also Length was concatenated to being used as a single varaible.
           
 	  
@@ -371,7 +371,7 @@ Post Optimiaztion:
 	        ctx->MBlock[63] = (ctx->Len) & A2;
 
 
-### Static declarations:
+## Static declarations:
 1. Static declarations were introduced in places of local variables used in functions.
 
        static uint8_t saltplus[2048];
