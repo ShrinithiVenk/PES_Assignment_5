@@ -13,7 +13,7 @@
 ## Loop Unrolling:
 
 1. In IshaResult function, loop unrolling was done to replace the for statement.<br /> 
-Initial:<br /> 
+Initial:
 
     for (int i=0; i<20; i+=4) {<br /> 
     digest_out[i]   = (ctx->MD[i/4] & 0xff000000) >> 24;
@@ -22,7 +22,7 @@ Initial:<br />
     digest_out[i+3] = (ctx->MD[i/4] & 0x000000ff);
      } 
 
-Post Optimization:<br /> 
+Post Optimization:
   
         digest_out[0] = *(ptr_MD);
 	digest_out[1] = *(ptr_MD + 1);
