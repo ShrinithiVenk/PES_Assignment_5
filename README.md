@@ -15,12 +15,12 @@
 1. In IshaResult function, loop unrolling was done to replace the for statement.<br /> 
 Initial:
 
-    for (int i=0; i<20; i+=4) {<br /> 
-    digest_out[i]   = (ctx->MD[i/4] & 0xff000000) >> 24;
-    digest_out[i+1] = (ctx->MD[i/4] & 0x00ff0000) >> 16;
-    digest_out[i+2] = (ctx->MD[i/4] & 0x0000ff00) >> 8;
-    digest_out[i+3] = (ctx->MD[i/4] & 0x000000ff);
-     } 
+        for (int i=0; i<20; i+=4) {
+        digest_out[i]   = (ctx->MD[i/4] & 0xff000000) >> 24;
+        digest_out[i+1] = (ctx->MD[i/4] & 0x00ff0000) >> 16;
+       digest_out[i+2] = (ctx->MD[i/4] & 0x0000ff00) >> 8;
+       digest_out[i+3] = (ctx->MD[i/4] & 0x000000ff);
+        } 
 
 Post Optimization:
   
@@ -132,7 +132,8 @@ Initial:
             C = ISHACircularShift(30,B);
             B = A;
             A = temp;
-           }
+            }
+	   
 	   
 Post Optimization:
 
