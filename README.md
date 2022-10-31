@@ -259,6 +259,7 @@ Post Optimization:
 	
 ## Little endianess
 1. Big endianess was converted to small endianess and pointers were used to access the variables. Changes were made in ishaResult and F functions respectively.
+
 Initial:
 
     for (int i=0; i<20; i+=4) {
@@ -309,33 +310,33 @@ Post Optimization:
          }
 
         while(length-- && !ctx->Corrupted)
-  {
+         {
         
-	ctx->MBlock[ctx->MB_Idx++] = (*message_array & 0xFF);
+	   ctx->MBlock[ctx->MB_Idx++] = (*message_array & 0xFF);
 
         ctx->Length_Low += 8;
-    / * Force it to 32 bits */
-    ctx->Length_Low &= 0xFFFFFFFF;
-    if (ctx->Length_Low == 0)
-    {
-      ctx->Length_High++;
-      /* Force it to 32 bits */
-      ctx->Length_High &= 0xFFFFFFFF;
-      if (ctx->Length_High == 0)
-      {
+        / * Force it to 32 bits */
+        ctx->Length_Low &= 0xFFFFFFFF;
+        if (ctx->Length_Low == 0)
+       {
+        ctx->Length_High++;
+        /* Force it to 32 bits */
+        ctx->Length_High &= 0xFFFFFFFF;
+        if (ctx->Length_High == 0)
+       {
         /* Message is too long */
         ctx->Corrupted = 1;
-      }
-    }
+       }
+       }
 
-    if (ctx->MB_Idx == 64)
-    {
-      ISHAProcessMessageBlock(ctx);
-    }
+       if (ctx->MB_Idx == 64)
+       {
+       ISHAProcessMessageBlock(ctx);
+       }
 
-    message_array++;
-  }
-} 
+       message_array++;
+       }
+       } 
 
 Post Optimiaztion:
 
@@ -361,8 +362,8 @@ Post Optimiaztion:
 		{
 			ISHAProcessMessageBlock(ctx);
 		}
-	}
-       }
+	      }
+             }
        
 2. Length_Low and Length_high were replaced with one variable.
 	
