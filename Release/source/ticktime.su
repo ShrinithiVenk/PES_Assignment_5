@@ -1,0 +1,5 @@
+../source/ticktime.c:14:6:init_ticktime	0	static
+../source/ticktime.c:30:6:SysTick_Handler	0	static
+../source/ticktime.c:36:12:now	0	static
+../source/ticktime.c:42:6:reset_timer	0	static
+../source/ticktime.c:48:12:get_timer	0	static
